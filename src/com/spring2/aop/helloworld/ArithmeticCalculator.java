@@ -1,4 +1,4 @@
-package com.spring.aop.helloworld;
+package com.spring2.aop.helloworld;
 
 public interface ArithmeticCalculator {
 	int add(int i,int j);

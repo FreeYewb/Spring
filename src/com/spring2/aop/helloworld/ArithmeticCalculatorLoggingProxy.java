@@ -1,4 +1,4 @@
-package com.spring.aop.helloworld;
+package com.spring2.aop.helloworld;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
