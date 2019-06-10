@@ -21,5 +21,8 @@ public class Main {
 		int result = arithmeticCalculator.add(3, 6);
 		System.out.println(result);
 		
+		result = arithmeticCalculator.div(12, 6);
+		System.out.println(result);
+		
 	}
 }
