@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 		<!-- 配置自动扫描的包 -->
-	<context:component-scan base-package="com.spring2.aop.impl"></context:component-scan>
+	<context:component-scan base-package="com.spring2.aop.impl"/>
 	<!-- 使 Aspectj 注解器作用：自动为匹配的类生成代理对象 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>
