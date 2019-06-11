@@ -14,5 +14,10 @@
 	<classpathentry kind="lib" path="lib/spring-context-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-core-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-expression-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-jdbc-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-orm-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-tx-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-web-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-webmvc-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
