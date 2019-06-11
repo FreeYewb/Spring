@@ -1,4 +1,4 @@
-package com.spring2.aop.helloworld;
+package com.spring3.aop;
 
 public class ArithmeticCalculatorImpl implements ArithmeticCalculator {
 
