@@ -4,20 +4,20 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 
-* @ClassName:  Main 
-* @version:£¨°æ±¾£¬¾ßÌå°æ±¾ĞÅÏ¢×Ô¼ºÀ´¶¨£© 
-* @Description: £¨¶ÔÀà½øĞĞ¹¦ÄÜÃèÊö£© 
-* @author: yewenbo £¨×÷Õß£© 
-* @date: 2019Äê6ÔÂ10ÈÕÏÂÎç4:35:54£¨ÈÕÆÚ£©
+ *
+ * @ClassName:  Main
+ * @version:ï¼ˆç‰ˆæœ¬ï¼Œå…·ä½“ç‰ˆæœ¬ä¿¡æ¯è‡ªå·±æ¥å®šï¼‰
+ * @Description: ï¼ˆå¯¹ç±»è¿›è¡ŒåŠŸèƒ½æè¿°ï¼‰
+ * @author: yewenbo ï¼ˆä½œè€…ï¼‰
+ * @date: 2019å¹´6æœˆ10æ—¥ä¸‹åˆ4:35:54ï¼ˆæ—¥æœŸï¼‰
  */
 public class Main {
 	public static void main(String[] args) {
-		//1.´´½¨spring µÄIOCÈİÆ÷
+		//1.åˆ›å»ºspring çš„IOCå®¹å™¨
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext2.xml");
-		//2.IOC ÈİÆ÷ÖĞ»ñÈ¡bean µÄÊµÀı
+		//2.IOC å®¹å™¨ä¸­è·å–bean çš„å®ä¾‹
 		ArithmeticCalculator arithmeticCalculator = ctx.getBean(ArithmeticCalculator.class);
-		//3.Ê¹ÓÃbean
+		//3.ä½¿ç”¨bean
 		int result = arithmeticCalculator.add(3, 6);
 		System.out.println(result);
 		

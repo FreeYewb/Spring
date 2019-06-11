@@ -9,10 +9,10 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
-@Aspect//ÔÙÉùÃ÷ÎªÒ»¸öÇĞÃæ
-@Component//°ÑÕâ¸öÀàÉùÃ÷ÎªÒ»¸öÇĞÃæ£ºĞèÒª°Ñ¸ÃÀà·ÅÈëµ½IOCÈİÆ÷ÖĞ
+@Aspect//å†å£°æ˜ä¸ºä¸€ä¸ªåˆ‡é¢
+@Component//æŠŠè¿™ä¸ªç±»å£°æ˜ä¸ºä¸€ä¸ªåˆ‡é¢ï¼šéœ€è¦æŠŠè¯¥ç±»æ”¾å…¥åˆ°IOCå®¹å™¨ä¸­
 public class LoggingAspect {
-	//ÉùÃ÷¸Ã·½·¨ÊÇÒ»¸öÇ°ÖÃÍ¨Öª£ºÔÚÄ¿±ê·½·¨¿ªÊ¼Ö®Ç°Ö´ĞĞ
+	//å£°æ˜è¯¥æ–¹æ³•æ˜¯ä¸€ä¸ªå‰ç½®é€šçŸ¥ï¼šåœ¨ç›®æ ‡æ–¹æ³•å¼€å§‹ä¹‹å‰æ‰§è¡Œ
 	@Before("execution(* com.spring2.aop.impl.*.*(int , int ))")
 	public void beforeMethod(JoinPoint joinpoint) {
 		String methodName = joinpoint.getSignature().getName();
@@ -20,9 +20,9 @@ public class LoggingAspect {
 		List<Object> args = Arrays.asList(joinpoint.getArgs());
 		System.out.println("The method "+methodName+"begins" + args);
  	}
-	
-	//ºóÖÃÍ¨Öª£ºÔÚÄ¿±ê·½·¨Ö´ĞĞºó£¨ÎŞÂÛÊÇ·ñ·¢ÉúÒì³££©£¬Ö´ĞĞµÄÍ¨Öª
-	//ÔÚºóÖÃÍ¨ÖªÖĞ»¹²»ÄÜ·ÃÎÊÄ¿±ê·½·¨Ö´ĞĞµÄ½á¹û
+
+	//åç½®é€šçŸ¥ï¼šåœ¨ç›®æ ‡æ–¹æ³•æ‰§è¡Œåï¼ˆæ— è®ºæ˜¯å¦å‘ç”Ÿå¼‚å¸¸ï¼‰ï¼Œæ‰§è¡Œçš„é€šçŸ¥
+	//åœ¨åç½®é€šçŸ¥ä¸­è¿˜ä¸èƒ½è®¿é—®ç›®æ ‡æ–¹æ³•æ‰§è¡Œçš„ç»“æœ
 	@After("execution(* com.spring2.aop.impl.*.*(int , int ))")
 	public void  afterMethod(JoinPoint joinpoint) {
 		String methodName = joinpoint.getSignature().getName();
