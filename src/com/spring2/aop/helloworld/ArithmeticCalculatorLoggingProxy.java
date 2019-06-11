@@ -8,7 +8,7 @@ import java.util.Arrays;
 import org.springframework.beans.propertyeditors.ClassArrayEditor;
 
 public class ArithmeticCalculatorLoggingProxy {
-	//Òª´úÀíµÄ¶ÔÏó
+	//è¦ä»£ç†çš„å¯¹è±¡
 	private ArithmeticCalculator target;
 	
 	
@@ -21,35 +21,41 @@ public class ArithmeticCalculatorLoggingProxy {
 	public ArithmeticCalculator getLoggingProxy() {
 		ArithmeticCalculator proxy =null;
 		
-		//´úÀí¶ÔÏóÓÉÄÄÒ»¸öÀà¼ÓÔØÆ÷¸ºÔğ¼ÓÔØ
+		//ä»£ç†å¯¹è±¡ç”±å“ªä¸€ä¸ªç±»åŠ è½½å™¨è´Ÿè´£åŠ è½½
 		ClassLoader loader = target.getClass().getClassLoader();
 		
-		//´úÀí¶ÔÏóµÄÀàĞÍ£¬¼´ÆäÖĞÓĞÄÄĞ©·½·¨
+		//ä»£ç†å¯¹è±¡çš„ç±»å‹ï¼Œå³å…¶ä¸­æœ‰å“ªäº›æ–¹æ³•
 		Class[] interfaces = new Class[]{ArithmeticCalculator.class};
-		//µ±µ÷ÓÃ´úÀí¶ÔÏóÆäÖĞµÄ·½·¨Ê±£¬¸ÃÖ´ĞĞ´úÂë
+		//å½“è°ƒç”¨ä»£ç†å¯¹è±¡å…¶ä¸­çš„æ–¹æ³•æ—¶ï¼Œè¯¥æ‰§è¡Œä»£ç 
 		InvocationHandler h = new InvocationHandler() {
 			/**
-			 * proxy: ÕıÔÚ·µ»ØµÄÄÇ¸ö´úÀí¶ÔÏó£¬Ò»°ãÇé¿öÏÂ£¬ÔÚinvoke ·½·¨ÖĞ¶¼²»Ê¹ÓÃ¸Ã¶ÔÏó¡£
-			 * method£ºÕıÔÚ±»µ÷ÓÃµÄ·½·¨
-			 * args: µ÷ÓÃ·½·¨Ê±£¬´«ÈëµÄ²ÎÊı
+			 * proxy: æ­£åœ¨è¿”å›çš„é‚£ä¸ªä»£ç†å¯¹è±¡ï¼Œä¸€èˆ¬æƒ…å†µä¸‹ï¼Œåœ¨invoke æ–¹æ³•ä¸­éƒ½ä¸ä½¿ç”¨è¯¥å¯¹è±¡ã€‚
+			 * methodï¼šæ­£åœ¨è¢«è°ƒç”¨çš„æ–¹æ³•
+			 * args: è°ƒç”¨æ–¹æ³•æ—¶ï¼Œä¼ å…¥çš„å‚æ•°
 			 */
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 				// TODO Auto-generated method stub
 				String methodName = method.getName();
-				//ÈÕÖ¾
+				//æ—¥å¿—
 				System.out.println("The method" + methodName + "begin with" + Arrays.asList(args));
 				
-				Object result = method.invoke(target, args);
-				//ÈÕÖ¾
+				Object result = null;
+				try {
+					//å‰ç½®é€šçŸ¥
+					result = method.invoke(target, args);
+					//è¿”å›é€šçŸ¥ï¼Œå¯ä»¥è®¿é—®åˆ°æ–¹æ³•çš„è¿”å›å€¼
+				}catch (Exception e){
+					//å¼‚å¸¸é€šçŸ¥ï¼Œå¯ä»¥è®¿é—®åˆ°æ–¹æ³•å‡ºç°çš„å¼‚å¸¸
+					e.printStackTrace();
+				}
+				//åç½®é€šçŸ¥ï¼Œå› ä¸ºæ–¹æ³•å¯èƒ½ä¼šå¼‚å¸¸ï¼Œæ‰€ä»¥è®¿é—®ä¸åˆ°æ–¹æ³•çš„è¿”å›å€¼
+
+				//æ—¥å¿—æ‰“å°
 				System.out.println("The method" + methodName + "ends with" + result);
 				return result;
 			}
 		};
-		
-		
-		
-		
 		
 		proxy = (ArithmeticCalculator) Proxy.newProxyInstance(loader, interfaces, h);
 		

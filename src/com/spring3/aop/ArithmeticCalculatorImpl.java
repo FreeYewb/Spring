@@ -1,5 +1,8 @@
 package com.spring3.aop;
 
+import org.springframework.stereotype.Component;
+
+@Component("arithmeticCalculator")
 public class ArithmeticCalculatorImpl implements ArithmeticCalculator {
 
 	@Override
