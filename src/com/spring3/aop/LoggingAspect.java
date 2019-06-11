@@ -20,10 +20,18 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class LoggingAspect {
+
+    /**
+     * 定义一个方法，用于声明切入点表达式。一般地，该方法中再不需要添入其他的代码。
+     * 使用@Pointcut 来声明切入点表达式
+     * 后面的其他通知直接使用方法名来引用当前的切入点表达式
+     */
+    @Pointcut("execution(public int com.spring3.aop.ArithmeticCalculator.*(*,*))")
+    public void declareJointPointExpression(){ }
     /**
      * 在com.spring3.aop.ArithmeticCalculator接口的每一个实现类的每一个方法开始之前执行一段代码
      */
-    @Before("execution(public int com.spring3.aop.ArithmeticCalculator.*(*,*))")
+    @Before("declareJointPointExpression()")
     public void  befprMethod(JoinPoint joinPoint){
       String methodName = joinPoint.getSignature().getName();
       Object [] args =joinPoint.getArgs();
@@ -45,7 +53,7 @@ public class LoggingAspect {
      * @param joinPoint
      * @param result
      */
-    @AfterReturning(value = "execution(public int com.spring3.aop.ArithmeticCalculator.*(*,*))",returning = "result")
+    @AfterReturning(value = "declareJointPointExpression()",returning = "result")
     public void afterReturning(JoinPoint joinPoint,Object result){
         String methodName = joinPoint.getSignature().getName();
         System.out.println("The method " +methodName + " ends  with " + result);

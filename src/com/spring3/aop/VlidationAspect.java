@@ -24,7 +24,7 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class VlidationAspect {
-    @Before("execution(public int com.spring3.aop.ArithmeticCalculator.*(*,*))")
+    @Before("LoggingAspect.declareJointPointExpression()")
     public void validateArgs(JoinPoint joinPoint){
         System.out.println("validate" + Arrays.asList(joinPoint.getArgs()));
     }
