@@ -11,16 +11,7 @@ public class Employee {
         private Integer id;
         private String userName;
         private String password;
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", afe=" + afe +
-                '}';
-    }
+        private  Integer afe;
 
     public Integer getId() {
         return id;
@@ -46,15 +37,21 @@ public class Employee {
         this.password = password;
     }
 
-    public Afe getAfe() {
+    public Integer getAfe() {
         return afe;
     }
 
-    public void setAfe(Afe afe) {
+    public void setAfe(Integer afe) {
         this.afe = afe;
     }
 
-    private  Afe afe;
-
-
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", afe=" + afe +
+                '}';
+    }
 }
