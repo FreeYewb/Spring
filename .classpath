@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="lib/spring-tx-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-web-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-webmvc-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
