@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @description: TODO yewenbo
  * @date 2019/6/14  14:45
  */
-@Repository("BBookShopDao")
+@Repository("BookShopDao")
 public class BookShopDaoImpl implements BookShopDao{
     @Autowired
     private JdbcTemplate jdbcTemplate;
