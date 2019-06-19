@@ -1,9 +1,10 @@
-package com.spring4.tx;
+package com.spring4.tx.xml;
 
+import com.spring4.tx.xml.service.BookShopService;
+import com.spring4.tx.xml.service.Cashier;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,18 +19,18 @@ import java.util.Arrays;
  */
 public class SpringTransactionTest {
     private ApplicationContext ctx = null;
-    private  BookShopDao bookShopDao = null;
-    private  BookShopService bookShopService = null;
-    private  Cashier cashier = null;
+    private BookShopDao bookShopDao = null;
+    private BookShopService bookShopService = null;
+    private Cashier cashier = null;
 
     {
-        ctx = new ClassPathXmlApplicationContext("applicationContext4.xml");
+        ctx = new ClassPathXmlApplicationContext("applicationContext4-xml.xml");
         bookShopDao = ctx.getBean(BookShopDao.class);
         bookShopService = ctx.getBean(BookShopService.class);
         cashier = ctx.getBean(Cashier.class);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+
     @Test
     public void testTransactionlPropagation(){
         cashier.checkout("AA", Arrays.asList("1001","1002"));
