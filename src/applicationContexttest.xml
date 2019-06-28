@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	
+	<context:component-scan base-package="com.spring.test.pojo"/>
+	<context:component-scan base-package="com.spring.test.service"/>
+	<bean name="source" class="com.spring.test.pojo.Source">
+		<property name="fruit" value="橙子"></property>
+		<property name="size" value="超大杯"></property>
+		<property name="sugar" value="多糖"></property>
+	</bean>
+	
+	<bean class="com.spring.test.pojo.Source" name="source1">
+		<property name="fruit" value="sadsd"></property>
+	</bean>
+	
+	<bean name="juice" class="com.spring.test.pojo.JuiceMaker">
+		<property name="source" ref="source"></property>
+	</bean>
+	
+	<bean name="productService" class="com.spring.test.service.ProductService"></bean>
+	
+	<bean id="loggerAspect" class="com.spring.test.aspect.LoggerAspect"></bean>
+	
+	<!-- 配置AOP -->
+		<aop:config>
+		<!-- where 在哪些地方（包。类、方法）做增加 -->
+			<aop:pointcut expression="execution(* com.spring.test.service.ProductService.*(..))" id="loggerCutpoint"/>
+			<!--  what 做什么增强 -->
+			<aop:aspect id="logAspect" ref="loggerAspect">
+			<!--  when 在什么时机（方法前/后/前后） -->
+				<aop:around method="log" pointcut-ref="loggerCutpoint"/>
+			</aop:aspect>
+		</aop:config>
+</beans>
