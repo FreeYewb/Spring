@@ -17,15 +17,17 @@
 	<aop:config>
 		<!-- 配置切点表达式-->
 		<aop:pointcut id="pointcut" expression="execution(* com.spring3.aop.xml.ArithmeticCalculator.*(int,int))"/>
+		
 		<!-- 配置切面及通知-->
 		<aop:aspect ref="loggingAspect" order="2">
 			<aop:before method="beforMethod" pointcut-ref="pointcut"/>
-		<aop:after method="afterMethod" pointcut-ref="pointcut"/>
-		<aop:after-returning method="afterReturning" pointcut-ref="pointcut" returning="result"/>
-        <aop:after-throwing method="afterThrowing" pointcut-ref="pointcut" throwing="ex"/>
-    </aop:aspect>
-    <aop:aspect ref="vlidationAspect" order="1">
-        <aop:before method="validateArgs" pointcut-ref="pointcut"/>
-    </aop:aspect>
+			<aop:after method="afterMethod" pointcut-ref="pointcut"/>
+			<aop:after-returning method="afterReturning" pointcut-ref="pointcut" returning="result"/>
+        	<aop:after-throwing method="afterThrowing" pointcut-ref="pointcut" throwing="ex"/>
+    	</aop:aspect>
+    	
+    	<aop:aspect ref="vlidationAspect" order="1">
+        	<aop:before method="validateArgs" pointcut-ref="pointcut"/>
+    	</aop:aspect>
 	</aop:config>
 </beans>
